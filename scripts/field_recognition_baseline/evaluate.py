@@ -180,6 +180,18 @@ FIELD_CATEGORIES_PER_TEMPLATE = {
         "mrz" : FieldCategory.MRZ,
         "observations" : FieldCategory.ALPHA,
         "permit_type" : FieldCategory.ALPHA
+    },
+    "MIDV_TD1-front":{
+        "birth_date" : FieldCategory.NUMERIC,
+        "document_number" : FieldCategory.ALPHANUMERIC,
+        "expires" : FieldCategory.NUMERIC,
+        "family_name" : FieldCategory.ALPHA,
+        "foreign_nationality" : FieldCategory.ALPHA,
+        "gender" : FieldCategory.ALPHA,
+        "given_name" : FieldCategory.ALPHA,
+        "mrz" : FieldCategory.MRZ,
+        "observations" : FieldCategory.ALPHA,
+        "permit_type" : FieldCategory.ALPHA
     }
 }
 
