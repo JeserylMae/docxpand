@@ -1,0 +1,193 @@
+{
+    "name": "MIDV_CHILE",
+    "dpi": 300,
+    "width": 1240,
+    "height": 878,
+    "fonts": {
+        "Mr De Haviland": "fonts/MrDeHaviland.ttf",
+        "Inter": "fonts/Inter-VariableFont_opsz,wght.ttf"
+    },
+    "context": {
+        "gender": {
+            "male": 0.48,
+            "female": 0.48,
+            "nonbinary": 0.04
+        },
+        "ethnicity": {
+            "west european": 0.25,
+            "south european": 0.25,
+            "middle eastern": 0.25,
+            "south american": 0.25
+        },
+        "name_locale": {
+            "de_DE": 0.04,
+            "en_GB": 0.01,
+            "es_CL": 0.84,
+            "es_ES": 0.05,
+            "fr_FR": 0.01,
+            "hr_HR": 0.01,
+            "it_IT": 0.03,
+            "pt_BR": 0.01
+        },
+        "locale": "es_ES"
+    },
+    "sides": {
+        "front": {
+            "template": "front.svg",
+            "fields": [
+                {
+                    "name": "gender",
+                    "type": "text",
+                    "provider": {
+                        "__class__": "docxpand.providers.GenderProvider",
+                        "__method__": "get_gender_letter",
+                        "call_context": {
+                            "gender": "gender"
+                        }
+                    }
+                },
+                {
+                    "name": "document_number",
+                    "type": "text",
+                    "provider": {
+                        "__class__": "faker.providers.BaseProvider",
+                        "init_context": {
+                            "generator": "generator"
+                        },
+                        "__method__": "bothify",
+                        "call_args": {
+                            "text": "#########"
+                        }
+                    }
+                },
+                {
+                    "name": "family_name",
+                    "type": "name",
+                    "provider": {
+                        "__class__": "faker.providers.person.{name_locale}.Provider",
+                        "init_context": {
+                            "generator": "generator"
+                        },
+                        "call_context": {
+                            "text_transform": "uppercase"
+                        },
+                        "__method__": "last_name_{gender}"
+                    },
+                    "parts": {
+                        "1": 0.55,
+                        "2": 0.45
+                    },
+                    "separator": " ",
+                    "max_chars_per_line": 25,
+                    "lines": 2
+                },
+                {
+                    "name": "given_name",
+                    "type": "name",
+                    "provider": {
+                        "__class__": "faker.providers.person.{name_locale}.Provider",
+                        "init_context": {
+                            "generator": "generator"
+                        },
+                        "call_context": {
+                            "text_transform": "uppercase"
+                        },
+                        "__method__": "first_name_{gender}"
+                    },
+                    "parts": {
+                        "1": 0.6,
+                        "2": 0.4
+                    },
+                    "separator": " ",
+                    "max_chars_per_line": 25,
+                    "lines": 1
+                },
+                {
+                    "name": "birth_date",
+                    "type": "date",
+                    "format": "%d.%m.%Y",
+                    "provider": {
+                        "__class__": "faker.providers.date_time.Provider",
+                        "init_context": {
+                            "generator": "generator"
+                        },
+                        "__method__": "date_of_birth",
+                        "call_args": {
+                            "minimum_age": 18,
+                            "maximum_age": 75
+                        }
+                    },
+                    "lines": 1
+                },
+                {
+                    "name": "expires",
+                    "type": "date",
+                    "format": "%d.%m.%Y",
+                    "provider": {
+                        "__class__": "faker.providers.date_time.Provider",
+                        "init_context": {
+                            "generator": "generator"
+                        },
+                        "__method__": "date_between",
+                        "call_args": {
+                            "start_date": "today",
+                            "end_date": "+10y"
+                        }
+                    },
+                    "lines": 1
+                },
+                {
+                    "name": "emissions",
+                    "type": "date",
+                    "format": "%d.%m.%Y",
+                    "provider": {
+                        "__class__": "faker.providers.date_time.Provider",
+                        "init_context": {
+                            "generator": "generator"
+                        },
+                        "__method__": "date_between",
+                        "call_args": {
+                            "start_date": "-10y",
+                            "end_date": "today"
+                        }
+                    },
+                    "lines": 1
+                },
+                {
+                    "name": "photo",
+                    "type": "photo",
+                    "provider": {
+                        "__class__": "docxpand.providers.photo.StableDiffusionProvider",
+                        "__method__": "id_photo",
+                        "call_args": {
+                            "width": 881,
+                            "height": 1132
+                        },
+                        "call_context": {
+                            "existing_fields": "existing_fields",
+                            "gender": "gender",
+                            "ethnicity": "ethnicity",
+                            "url": "url"
+                        }
+                    }
+                },
+                
+                {
+                    "name": "run",
+                    "type": "text",
+                    "provider": {
+                        "__class__": "faker.providers.BaseProvider",
+                        "init_context": {
+                            "generator": "generator"
+                        },
+                        "__method__": "bothify",
+                        "call_args": {
+                            "text": "##.###.###-?", 
+                            "letters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

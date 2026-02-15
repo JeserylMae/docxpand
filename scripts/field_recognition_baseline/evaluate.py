@@ -192,6 +192,16 @@ FIELD_CATEGORIES_PER_TEMPLATE = {
         "mrz" : FieldCategory.MRZ,
         "observations" : FieldCategory.ALPHA,
         "permit_type" : FieldCategory.ALPHA
+    },
+    "MIDV_CHILE-front":{
+        "birth_date" : FieldCategory.NUMERIC,
+        "document_number" : FieldCategory.ALPHANUMERIC,
+        "expires" : FieldCategory.NUMERIC,
+        "family_name" : FieldCategory.ALPHA,
+        "gender" : FieldCategory.ALPHA,
+        "given_name" : FieldCategory.ALPHA,
+        "run": FieldCategory.ALPHANUMERIC,
+        "emissions": FieldCategory.NUMERIC
     }
 }
 

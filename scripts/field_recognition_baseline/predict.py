@@ -32,7 +32,8 @@ LANGUAGES_PER_TEMPLATE = {
     "RP_CARD_TD1-front": ("nld", "fra", "deu", ),
     "RP_CARD_TD2-back": ("ita", ),
     "RP_CARD_TD2-front": ("ita", ),
-    "MIDV_TD1-front": ("ita", )
+    "MIDV_TD1-front": ("ita", ),
+    "MIDV_CHILE-front": ("spa", )
 }
 
 @click.command()
